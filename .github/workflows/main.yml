@@ -19,3 +19,8 @@ jobs:
           CYPRESS_TELEGRAM_BOT_CHAT_ID: ${{ secrets.CYPRESS_TELEGRAM_BOT_CHAT_ID }}
           CYPRESS_AMAZON_EMAIL: ${{ secrets.CYPRESS_AMAZON_EMAIL }}
           CYPRESS_AMAZON_PASSWORD: ${{ secrets.CYPRESS_AMAZON_PASSWORD }}
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
