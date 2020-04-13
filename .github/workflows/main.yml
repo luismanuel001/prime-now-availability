@@ -1,0 +1,18 @@
+name: Chrome headless
+on:
+  schedule:
+    - cron: "30-32,00-2 * * * *"
+jobs:
+  cypress-run:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: cypress-io/github-action@v1
+        with:
+          browser: chrome
+          headless: true
+        env: 
+          CYPRESS_TELEGRAM_BOT_TOKEN: ${{ secrets.CYPRESS_TELEGRAM_BOT_TOKEN }}
+          CYPRESS_TELEGRAM_BOT_CHAT_ID: ${{ secrets.CYPRESS_TELEGRAM_BOT_CHAT_ID }}
+          CYPRESS_AMAZON_EMAIL: ${{ secrets.CYPRESS_AMAZON_EMAIL }}
+          CYPRESS_AMAZON_PASSWORD: ${{ secrets.CYPRESS_AMAZON_PASSWORD }}
